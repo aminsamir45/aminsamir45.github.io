@@ -1,67 +1,83 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-20 px-4 bg-gradient-to-b from-slate-800 to-slate-900">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">About Me</h2>
-          <p className="text-xl text-foreground/70">Passionate about AI research and building impactful technology</p>
-        </motion.div>
+        {/* Centered Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text">About</h2>
+        </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h3 className="text-2xl font-bold mb-6">My Journey</h3>
-            <p className="text-foreground/80 leading-relaxed mb-4">
-              Currently pursuing my Masters in Computer Science and Cognitive Science at MIT, 
-              where I'm researching Decentralized AI in the Media Lab. My academic journey has 
-              been marked by excellence, maintaining a 4.9/5.0 GPA.
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text */}
+          <div className="space-y-6">
+            <p className="text-lg text-slate-300 leading-relaxed">
+              Fully committed to the philosophy of life-long learning, I'm an AI researcher and software engineer 
+              with a deep passion for machine learning, full-stack development, and building impactful technology. 
+              The unique combination of creativity, logic, technology and never running out of new things to discover, 
+              drives my excitement and passion for research and development.
             </p>
-            <p className="text-foreground/80 leading-relaxed">
-              As the former CTO and Co-Founder of HomeRunns, I built a marketplace connecting 
-              homeowners with contractors, generating $195K ARR in our first year. Currently, 
-              I'm a Software Engineer at Mercor, enhancing data aggregation pipelines for novel 
-              job matching algorithms.
+            <p className="text-lg text-slate-300 leading-relaxed">
+              Outside of tech, I competed in varsity cross country and track & field for MIT, was an All-State 
+              trumpeter, and enjoy strategy games like Catan and Poker. I'm also fascinated by cognitive science 
+              and how the human brain works.
             </p>
-          </motion.div>
+            {/* <p className="text-lg text-slate-300 leading-relaxed">
+              Currently pursuing my Masters in Computer Science and Cognitive Science at MIT, where I'm researching 
+              Decentralized AI in the Media Lab. As the former CTO and Co-Founder of HomeRunns, I built a marketplace 
+              connecting homeowners with contractors, generating $195K ARR in our first year.
+            </p> */}
+          </div>
           
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <div>
-              <h4 className="text-lg font-semibold mb-3">Technical Skills</h4>
-              <div className="flex flex-wrap gap-2">
-                {['Python', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'PyTorch', 'TensorFlow', 'AWS', 'GCP'].map((skill) => (
-                  <span key={skill} className="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">
-                    {skill}
-                  </span>
-                ))}
+          {/* Right Column - Skills Cards */}
+          <div className="lg:pl-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+              {[
+                'PYTHON', 'JAVASCRIPT', 'REACT', 'PYTORCH', 'TENSORFLOW', 
+                'NODE.JS', 'TYPESCRIPT', 'AWS', 'GCP', 'MONGODB', 'DOCKER', 'NEXT.JS'
+              ].map((skill) => (
+                <div key={skill} className="text-center group">
+                  <div className="relative overflow-hidden bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-blue-600/10 border border-blue-500/20 rounded-lg p-4 hover:from-blue-500/20 hover:via-purple-500/20 hover:to-blue-600/20 hover:border-blue-400/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/10">
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative text-blue-400 font-semibold text-sm group-hover:text-blue-300 transition-colors duration-300">{skill}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Photos Section */}
+        <div className="mt-16">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold gradient-text">Life Beyond Code</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Photo placeholders - replace with your actual photos */}
+            {[
+              { src: '/photos/IMG_1348.heic', alt: 'MIT Band', caption: 'MIT Band Performance' },
+              { src: '/photos/IMG_3668.jpg', alt: 'Cross Country Running', caption: 'MIT Cross Country' },
+              { src: '/photos/IMG_2953.jpeg', alt: 'Playing Trumpet', caption: 'All-State Trumpet' }
+            ].map((photo, index) => (
+              <div key={index} className="group relative overflow-hidden rounded-lg bg-slate-800/50 border border-slate-700 hover:border-blue-500/50 transition-all duration-300">
+                <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
+                  <img 
+                    src={photo.src} 
+                    alt={photo.alt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-medium">{photo.caption}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-3">Interests</h4>
-              <p className="text-foreground/70">
-                When I'm not coding or researching, you can find me rock climbing, 
-                playing poker, or exploring the latest developments in AI and machine learning.
-              </p>
-            </div>
-          </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,96 +1,114 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [errors, setErrors] = useState<{[key: string]: string}>({})
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const validateForm = () => {
+    const newErrors: {[key: string]: string} = {}
+    
+    if (!formData.name.trim()) {
+      newErrors.name = 'Please enter your name.'
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please enter a valid email.'
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email.'
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'Please enter a message.'
+    }
+    
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (validateForm()) {
+      // Handle form submission here
+      console.log('Form submitted:', formData)
+      // Reset form
+      setFormData({ name: '', email: '', message: '' })
+      setErrors({})
+    }
+  }
+
   return (
-    <section id="contact" className="py-20 px-4 bg-slate-900/50">
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">Let's Connect</h2>
-          <p className="text-xl text-foreground/70 mb-12 max-w-2xl mx-auto">
-            I'm always interested in discussing new opportunities, research collaborations, 
-            or just connecting with fellow technologists.
+    <section id="contact" className="py-20 px-4">
+      <div className="max-w-2xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">Contact</h2>
+          <p className="text-lg text-slate-300">
+            Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid md:grid-cols-3 gap-8 mb-12"
-        >
-          <motion.a
-            href="mailto:aminsamir45@gmail.com"
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl p-6 hover:border-accent/40 transition-all duration-300"
-          >
-            <div className="text-accent text-2xl mb-4">📧</div>
-            <h3 className="text-lg font-semibold mb-2">Email</h3>
-            <p className="text-foreground/70">aminsamir45@gmail.com</p>
-          </motion.a>
-
-          <motion.a
-            href="https://linkedin.com/in/samir-amin-88a2462a"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl p-6 hover:border-accent/40 transition-all duration-300"
-          >
-            <div className="text-accent text-2xl mb-4">💼</div>
-            <h3 className="text-lg font-semibold mb-2">LinkedIn</h3>
-            <p className="text-foreground/70">Connect professionally</p>
-          </motion.a>
-
-          <motion.a
-            href="tel:+13607892182"
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl p-6 hover:border-accent/40 transition-all duration-300"
-          >
-            <div className="text-accent text-2xl mb-4">📱</div>
-            <h3 className="text-lg font-semibold mb-2">Phone</h3>
-            <p className="text-foreground/70">(360) 789-2182</p>
-          </motion.a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="border-t border-accent/20 pt-8"
-        >
-          <p className="text-foreground/60 mb-4">
-            © 2025 Samir Amin. Built with Next.js, TypeScript, and Tailwind CSS.
-          </p>
-          <div className="flex justify-center space-x-6">
-            <motion.a
-              href="https://github.com/aminsamir45"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              className="text-foreground/60 hover:text-accent transition-colors duration-200"
-            >
-              GitHub
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/samir-amin-88a2462a"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              className="text-foreground/60 hover:text-accent transition-colors duration-200"
-            >
-              LinkedIn
-            </motion.a>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-colors duration-200"
+            />
+            {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
           </div>
-        </motion.div>
+
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-colors duration-200"
+            />
+            {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
+          </div>
+
+          <div>
+            <textarea
+              name="message"
+              placeholder="Message"
+              rows={6}
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-colors duration-200 resize-none"
+            />
+            {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200"
+          >
+            Submit
+          </button>
+        </form>
+
+        <div className="text-center mt-16 pt-8 border-t border-slate-700">
+          <p className="text-slate-400 text-sm">
+            SAMIR AMIN ©2025
+          </p>
+        </div>
       </div>
     </section>
   )

@@ -1,93 +1,88 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 
 const ProjectsSection = () => {
   const projects = [
     {
-      title: 'MIT PokerBots',
-      description: 'Achieved top 10% placement in the 2025 MIT Pokerbots competition',
-      tech: ['Python', 'Game Theory', 'AI'],
-      link: 'https://github.com/tjeverett/pokerbot2025',
-      highlight: 'Top 10%'
+      title: 'BERT Bias Detection',
+      description: 'Fine-tuned BERT on hand-curated dataset to mitigate racial and gender bias in language models.',
+      tech: ['BERT', 'NLP', 'Bias Mitigation'],
+      link: 'https://github.com/reeceshuttle/63950/tree/main',
+      liveLink: null
     },
     {
       title: 'Transformer vs. RNN/LSTM',
-      description: 'Trained and compared Transformer and LSTM models on modular arithmetic tasks using PyTorch',
+      description: 'Trained and compared Transformer and LSTM models on modular arithmetic tasks using PyTorch.',
       tech: ['PyTorch', 'Transformers', 'Deep Learning'],
       link: 'https://github.com/aminsamir45/Transformers-vs-RNNs-LSTMs',
-      highlight: 'Research'
+      liveLink: null
     },
     {
-      title: 'BERT Bias Detection',
-      description: 'Fine-tuned BERT on hand-curated dataset to mitigate racial and gender bias',
-      tech: ['BERT', 'NLP', 'Bias Mitigation'],
-      link: 'https://github.com/reeceshuttle/63950/tree/main',
-      highlight: 'AI Ethics'
+      title: 'MIT PokerBots',
+      description: 'Achieved top 10% placement in the 2025 MIT Pokerbots competition using advanced game theory.',
+      tech: ['Python', 'Game Theory', 'AI'],
+      link: 'https://github.com/tjeverett1/pokerbot2025',
+      liveLink: null
     },
     {
       title: 'HomeRunns Platform',
-      description: 'Built marketplace connecting homeowners with contractors, generating $195K ARR',
+      description: 'Full stack marketplace connecting homeowners with contractors, generating $195K ARR in first year.',
       tech: ['React', 'Node.js', 'Firebase', 'Stripe'],
       link: 'https://homerunns.com',
-      highlight: '$195K ARR'
+      liveLink: 'https://homerunns.com'
     }
   ]
 
   return (
-    <section id="projects" className="py-20 px-4 bg-slate-900/50">
+    <section id="projects" className="py-20 px-4 bg-slate-900">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Featured Projects</h2>
-          <p className="text-xl text-foreground/70">A showcase of my technical work and research</p>
-        </motion.div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Projects</h2>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project) => (
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl p-6 hover:border-accent/40 transition-all duration-300"
+              className="bg-slate-800/50 border border-slate-700 rounded-lg p-6 hover:border-blue-500/50 transition-all duration-300"
             >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
-                <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs font-semibold">
-                  {project.highlight}
-                </span>
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+                <p className="text-slate-300 leading-relaxed">
+                  {project.description}
+                </p>
               </div>
               
-              <p className="text-foreground/70 mb-4 leading-relaxed">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech) => (
-                  <span key={tech} className="bg-primary/20 text-primary px-2 py-1 rounded text-sm">
+                  <span key={tech} className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm">
                     {tech}
                   </span>
                 ))}
               </div>
               
-              <motion.a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center text-accent hover:text-accent/80 font-medium transition-colors duration-200"
-              >
-                View Project →
-              </motion.a>
-            </motion.div>
+              <div className="flex gap-4">
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200"
+                  >
+                    Live app
+                  </a>
+                )}
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200"
+                >
+                  Learn more
+                </a>
+              </div>
+            </div>
           ))}
         </div>
       </div>
