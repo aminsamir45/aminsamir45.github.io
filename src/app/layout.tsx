@@ -6,7 +6,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Samir Amin - AI Researcher & Software Engineer',
+  title: 'Samir Amin',
   description: 'MIT graduate specializing in AI research, machine learning, and full-stack development. Currently Software Engineer at Mercor and former CTO of HomeRunns.',
   keywords: ['AI', 'Machine Learning', 'Software Engineer', 'MIT', 'Full Stack', 'Research'],
   authors: [{ name: 'Samir Amin' }],
