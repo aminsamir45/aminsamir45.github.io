@@ -58,20 +58,21 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Photo placeholders - replace with your actual photos */}
             {[
-              { src: '/photos/IMG_3668.png'},
-              { src: '/photos/IMG_1348.heic' },
-              { src: '/photos/IMG_2953.jpeg' }
+              { src: '/photos/IMG_3668.jpg', alt: 'Personal photo 1', caption: 'MIT Campus' },
+              { src: '/photos/IMG_2953.jpeg', alt: 'Personal photo 2', caption: 'Research Work' },
+              { src: '/photos/IMG_3668.png', alt: 'Personal photo 3', caption: 'MIT Campus' }
             ].map((photo, index) => (
               <div key={index} className="group relative overflow-hidden rounded-lg bg-slate-800/50 border border-slate-700 hover:border-blue-500/50 transition-all duration-300">
                 <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
                   <img 
                     src={photo.src} 
-                    
+                    alt={photo.alt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-medium">{photo.caption}</p>
                   </div>
                 </div>
               </div>
