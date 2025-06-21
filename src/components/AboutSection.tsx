@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 
 const AboutSection = () => {
   return (
@@ -63,11 +64,13 @@ const AboutSection = () => {
               { src: '/photos/IMG_3.jpeg', alt: 'Personal photo 3', caption: 'Research Work' }
             ].map((photo, index) => (
               <div key={index} className="group relative overflow-hidden rounded-lg bg-slate-800/50 border border-slate-700 hover:border-blue-500/50 transition-all duration-300">
-                <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
-                  <img 
+                <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center relative">
+                  <Image 
                     src={photo.src} 
                     alt={photo.alt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    unoptimized
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
