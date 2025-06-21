@@ -85,6 +85,34 @@ const ProjectsSection = () => {
             </div>
           ))}
         </div>
+        
+        {/* Contact Me Section */}
+        <div className="mt-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Contact</h2>
+          </div>
+          
+          <div className="text-center">
+            <div className="bg-gradient-to-br from-slate-800/50 via-slate-700/50 to-blue-900/20 border border-slate-600 rounded-lg p-8 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-white mb-4"></h3>
+              <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+                Interested in collaborating on AI research, discussing tech projects, or just want to chat? 
+                I'd love to hear from you!
+              </p>
+              <a
+                href="mailto:aminsamir45@gmail.com"
+                className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 hover:from-blue-600 hover:via-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 border border-blue-400/20 hover:border-blue-300/40"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <svg className="w-6 h-6 relative z-10" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+                <span className="relative z-10">Contact Me</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

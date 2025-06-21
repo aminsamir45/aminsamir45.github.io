@@ -8,7 +8,7 @@ const AboutSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Centered Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text">About</h2>
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text">About Me</h2>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -53,14 +53,14 @@ const AboutSection = () => {
         {/* Photos Section */}
         <div className="mt-16">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold gradient-text">Life Beyond Code</h3>
+            <h3 className="text-2xl font-bold gradient-text"></h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Photo placeholders - replace with your actual photos */}
             {[
-              { src: '/photos/IMG_1348.heic', alt: 'MIT Band', caption: 'MIT Band Performance' },
-              { src: '/photos/IMG_3668.jpg', alt: 'Cross Country Running', caption: 'MIT Cross Country' },
-              { src: '/photos/IMG_2953.jpeg', alt: 'Playing Trumpet', caption: 'All-State Trumpet' }
+              { src: '/photos/IMG_3668.png'},
+              { src: '/photos/IMG_1348.heic' },
+              { src: '/photos/IMG_2953.jpeg' }
             ].map((photo, index) => (
               <div key={index} className="group relative overflow-hidden rounded-lg bg-slate-800/50 border border-slate-700 hover:border-blue-500/50 transition-all duration-300">
                 <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
