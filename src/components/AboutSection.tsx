@@ -66,13 +66,12 @@ const AboutSection = () => {
                 <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
                   <img 
                     src={photo.src} 
-                    alt={photo.alt}
+                    
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-white text-sm font-medium">{photo.caption}</p>
                   </div>
                 </div>
               </div>
