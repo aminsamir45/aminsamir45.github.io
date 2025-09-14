@@ -5,6 +5,14 @@ import React from 'react'
 const ExperienceSection = () => {
   const experiences = [
     {
+      company: 'Weave',
+      role: 'Founding AI Engineer',
+      period: 'August 2025 - Present',
+      location: 'Remote',
+      description: 'Building AI agents to explore engineering productivity',
+      website: '#'
+    },
+    {
       company: 'Mercor',
       role: 'Software Engineer',
       period: 'February 2025 - May 2025',
