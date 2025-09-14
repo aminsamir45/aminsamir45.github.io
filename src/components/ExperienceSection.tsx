@@ -8,7 +8,7 @@ const ExperienceSection = () => {
       company: 'Weave',
       role: 'Founding AI Engineer',
       period: 'August 2025 - Present',
-      location: 'Remote',
+      location: 'San Fransisco, CA',
       description: 'Building AI agents to explore engineering productivity',
       website: '#'
     },
